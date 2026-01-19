@@ -1,4 +1,4 @@
-# Lab2 - AWS Infrastructure with Terraform Modules
+# Terraform-AWS-Project Infrastructure with Terraform Modules
 
 This repository contains **Lab2** implemented using **Terraform Modules** (Network, Security, Compute).
 It provisions a VPC with public/private subnets, IGW, NAT Gateway, route tables, security groups, and EC2 instances.
@@ -14,7 +14,7 @@ It provisions a VPC with public/private subnets, IGW, NAT Gateway, route tables,
 
 ## Project Structure
 
-lab2-terraform/
+terraform-project/
 ├── main.tf
 ├── providers.tf
 ├── variables.tf
@@ -68,15 +68,10 @@ Proof of Modular Deployment
 After apply, resources appear under module paths:
 
 module.network.*
-
 module.security.*
-
 module.compute.*
 
 Example:
-
 module.network.aws_vpc.this
-
 module.security.aws_security_group.bastion
-
 module.compute.aws_instance.public
