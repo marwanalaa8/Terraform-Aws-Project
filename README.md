@@ -14,25 +14,16 @@ It provisions a VPC with public/private subnets, IGW, NAT Gateway, route tables,
 
 ## Project Structure
 
-terraform-project/
-├── main.tf
-├── providers.tf
-├── variables.tf
-├── outputs.tf
-├── terraform.tfvars.example
-└── modules/
-├── network/
-│ ├── main.tf
-│ ├── variables.tf
-│ └── outputs.tf
-├── security/
-│ ├── main.tf
-│ ├── variables.tf
-│ └── outputs.tf
-└── compute/
-├── main.tf
-├── variables.tf
-└── outputs.tf
+| Path | Description |
+|------|------------|
+| `main.tf` | Root module |
+| `providers.tf` | AWS provider configuration |
+| `variables.tf` | Global variables |
+| `outputs.tf` | Terraform outputs |
+| `terraform.tfvars.example` | Example variables file |
+| `modules/network/` | VPC, Subnets, IGW, NAT |
+| `modules/security/` | Security Groups |
+| `modules/compute/` | EC2 Instances |
 
 ## Modules
 ### 1) Network Module
@@ -53,20 +44,19 @@ Creates:
 - Private EC2 (apache)
 
 ## How to Run
-1. Copy tfvars example:
+
 ```bash
 cp terraform.tfvars.example terraform.tfvars
 
 Edit terraform.tfvars (set my_ip_cidr and key_name).
 Run:
-
+```bash
 terraform init
 terraform plan
 terraform apply
 Proof of Modular Deployment
 
 After apply, resources appear under module paths:
-
 module.network.*
 module.security.*
 module.compute.*
@@ -75,3 +65,30 @@ Example:
 module.network.aws_vpc.this
 module.security.aws_security_group.bastion
 module.compute.aws_instance.public
+
+## 📤 Outputs
+After `terraform apply`, print outputs:
+
+```bash
+terraform output
+
+Expected outputs:
+public_ip
+private_ip
+public_http_url
+
+🌐 Access / Verify
+Open the web server in your browser:
+
+http://<PUBLIC_IP>
+
+Or test from terminal:
+
+curl -I http://<PUBLIC_IP>
+
+Expected:
+HTTP/1.1 200 OK
+
+🧹 Cleanup
+terraform destroy
+
