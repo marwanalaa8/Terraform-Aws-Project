@@ -1,6 +1,6 @@
 # Terraform-AWS-Project Infrastructure with Terraform Modules
 
-This repository contains **Lab2** implemented using **Terraform Modules** (Network, Security, Compute).
+This repository contains **Terraform-AWS-Project** implemented using **Terraform Modules** (Network, Security, Compute).
 It provisions a VPC with public/private subnets, IGW, NAT Gateway, route tables, security groups, and EC2 instances.
 
 ## Architecture
