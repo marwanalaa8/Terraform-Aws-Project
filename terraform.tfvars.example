@@ -1,0 +1,16 @@
+aws_region   = "us-east-1"
+project_name = "lab2"
+
+vpc_cidr = "10.0.0.0/16"
+public_subnet_cidrs  = ["10.0.0.0/24"]
+private_subnet_cidrs = ["10.0.1.0/24"]
+
+my_ip_cidr = "YOUR_PUBLIC_IP/32"
+key_name   = "YOUR_KEYPAIR_NAME"
+
+instance_type_public  = "t2.micro"
+instance_type_private = "t2.micro"
+
+tags = {
+  Lab = "Lab2"
+}
